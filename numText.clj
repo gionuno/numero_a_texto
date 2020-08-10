@@ -62,8 +62,10 @@
     (< l 10) (llones_digitos l)
     :else (unir ""
                   [(llones_unidades (mod l 10))
-                   (llones_diez (quot l 10))
-                   ])
+                   (llones_diez (mod (quot l 10) 10))
+									 (if (and (= 1 (quot l 100)) (>= (mod (quot l 10) 10) 1)) "i" "")
+									 (if (= 1 (quot l 100)) "cent" "")
+									 ])
     )
   )
 
